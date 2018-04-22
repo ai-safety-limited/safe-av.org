@@ -3,7 +3,7 @@
 ## TODO
 
 * Proof read, remove half of text
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-agency.git`
+*
 
 ## Copyright and License
 Copyright 2018 AI SAFETY LIMITED. Code released under the [MIT] license.
