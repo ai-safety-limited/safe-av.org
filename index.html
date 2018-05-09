@@ -129,8 +129,10 @@
 
 		<div>
 			<br>
-			<a href="https://twitter.com/SafeAV" class="btn btn-xl">Click to tweet your own report @SafeAV for fun and profit!</a>
-			<br><br>
+			<a href="https://twitter.com/SafeAV" class="btn btn-xl">Click to tweet your own report @SafeAV for fun and profit*</a>
+			<br>
+			<p class="text-secondary">* A monthly prize of $250, for the most interesting tweet of the month, subject to funds availability.</p>
+			<br>
                 </div>
 
 		
@@ -586,7 +588,7 @@
 	var app = angular.module('intro-carousel', []);
 	app.controller("divdynamic", function ($scope, $http) {
 	  $http.get("img/gallery/source.csv", {responseType: 'text'}).success( function (csv) {
-	    var lines = csv.split(/\r\n|\n/);
+	    var lines = csv.replace(/^\s+|\s+$/g, '').split(/\r\n|\n/);
 	    var items = [];
 	    for ( var i = 0; i < lines.length; i++) {
               var columns = lines[i].split(',');
