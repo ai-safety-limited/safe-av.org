@@ -37,6 +37,19 @@
             width: 100%;
         }
     }
+
+    .carousel-inner img {
+	margin: auto;
+        width:750px;
+	height:500px;
+    }
+
+    .carousel-caption {
+	margin: auto;
+        width:750px;	    
+	top: -25px;
+	bottom: auto;
+    }
     </style>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -62,7 +75,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#survey">Survey Hard Examples</a>
+                        <a class="nav-link" href="#header">Survey Hard Examples</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#dataset">Explore Public Dataset</a>
@@ -70,9 +83,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#portfolio">Why it is helpfull</a>
 		    </li>
+		    <!--
                     <li class="nav-item">
 	                <a class="nav-link" href="#gallery">Gallery of Examples</a>
 	            </li>
+		    -->
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">About/Contact</a>
                     </li>
@@ -82,7 +97,7 @@
     </nav>
 
     <!-- Header -->
-    <header class="masthead">
+    <header class="masthead" id="header">
         <div class="container">
             <div class="intro-text">
 		    
@@ -100,20 +115,24 @@
 		      <div class="carousel-item" data-ng-repeat="x in items" data-ng-class="{active : $first}">
 		        <img data-ng-src="{{x.image}}" alt=" carousel {{$index}}" />
 
-		           <div class="carousel-caption d-none d-md-block">
-			      <h5>Test</h5>
-			        <p>test</p>
-		           </div>
+		        <div class="carousel-caption d-none d-md-block">
+				<div class="alert alert-danger">
+				   <h5>{{x.description}}</h5>
+				</div>
+				<p class="text-secondary">{{x.severity}}</p>
+				<p class="text-muted"><small>Fair use of a copyrighted work, credit: {{x.link}}</small></p>
+		        </div>
 		      </div>
 		    </div>
 		  </div>
+		</div>  
 
-		  <div>
-                     <a href="https://twitter.com/SafeAV" class="btn btn-xl">Click to tweet your report @SafeAV</a> <br> <br>
-                  </div>
+		<div>
+			<br>
+			<a href="https://twitter.com/SafeAV" class="btn btn-xl">Click to tweet your own report @SafeAV for fun and profit!</a>
+			<br><br>
+                </div>
 
-
-		</div>
 		
 		<div class="container">
 	           <div class="row">
@@ -238,7 +257,9 @@
         </div>
     </section>
 
+ 
     <!-- Gallery Grid -->
+    <!--
     <section class="bg-faded" id="gallery">
         <div class="container">
             <div class="row">
@@ -294,7 +315,8 @@
             </div>
         </div>
     </section>
-   
+    -->
+
     <!-- Contact -->
     <section id="contact">
         <div class="container">
@@ -569,22 +591,20 @@
     <!-- Twitter widgets -->
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="js/agency.min.js"></script>
-
     <!-- Adding a carousel of hard example images -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>	
+    <script src="vendor/angularjs/1.5.6/angular.min.js"></script>	
     <script>
 	var app = angular.module('intro-carousel', []);
 	app.controller("divdynamic", function ($scope, $http) {
 	  $http.get("img/gallery/source.csv", {responseType: 'text'}).success( function (csv) {
 	    var lines = csv.split(/\r\n|\n/);
-	    var items = []; //"img/gallery/11-thumbnail.jpg"];
+	    var items = [];
 	    for ( var i = 0; i < lines.length; i++) {
               var columns = lines[i].split(',');
-	      items.push({"image" : "img/gallery/" + columns[0] + "-thumbnail.jpg"});
+	      items.push({"image" : "img/gallery/thumbs/" + columns[0] + ".jpg",
+	                  "link" : columns[1], "description" : columns[2], "severity" : columns[3]});
 	    }
-	    $scope.$parent.items=items;
+	    $scope.$parent.items=items.sort(function() { return 0.5 - Math.random() });
 	  });
 	});
     </script>
