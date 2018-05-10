@@ -71,7 +71,9 @@
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="#page-top"><img src="img/logos/logo-transparent-128.png" alt="safe-av.org"></a>
+            <a class="navbar-brand" href="#page-top">
+		    <!-- <strong><i class="fa fa-twitter" style="color:#00aced"></i><a href="https://twitter.com/SafeAV">@SafeAV</a></strong> -->
+		    <img src="img/logos/logo-transparent-128.png" alt="safe-av.org"> </a>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -595,7 +597,8 @@
 	      items.push({"image" : "img/gallery/thumbs/" + columns[0] + ".jpg",
 	                  "link" : columns[1], "description" : columns[2], "severity" : columns[3]});
 	    }
-	    $scope.$parent.items=items.sort(function() { return 0.5 - Math.random() });
+	    shuffle = function(a) {var i=a.length,t,j;a=a.slice();while(--i) t=a[i],a[i]=a[j=~~(Math.random()*(i+1))],a[j]=t;return a;};
+	    $scope.$parent.items=shuffle(items);
 	  });
 	});
     </script>
