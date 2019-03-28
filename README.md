@@ -1,4 +1,4 @@
-# Code for [safe-av.org](http://safe-av.org/) website.  If you see any problems with the website, please contribute in a form of feedback, suggestions and pull requests.
+# Code for [safe-av.org](http://www.safe-av.org.s3-website-us-west-2.amazonaws.com/) website.  If you see any problems with the website, please contribute in a form of feedback, suggestions and pull requests.
 
 ## TODO
 
